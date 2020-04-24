@@ -46,12 +46,10 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        # You must use recursion for this solution
-
         # if node has no next, it is tail, so set next to prev and return
         if not self.head.next_node:
-            self.head.next_node = prev
-        
+            node.next_node = prev
+
         # if node has a next, set its next to previous (first case None)
         # and save node as prev
         else:
