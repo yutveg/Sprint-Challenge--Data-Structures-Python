@@ -8,6 +8,7 @@ class RingBuffer:
         self.storage = DoublyLinkedList()
 
     def append(self, item):
+
         if self.storage.__len__() == self.capacity:
             # if current is the tail and buffer full add to head
             if self.current == self.storage.tail:
@@ -21,7 +22,9 @@ class RingBuffer:
                     self.current.insert_after(item)
                     self.current = self.current.next
                 else:
-                    self.current = self.storage.tail
+                    self.storage.remove_from_head()
+                    self.storage.add_to_head(item)
+                    self.current = self.storage.head
         # while filling buffer insert backwards from tail
         else:
             self.storage.add_to_tail(item)
